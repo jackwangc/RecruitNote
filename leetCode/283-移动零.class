@@ -1,0 +1,14 @@
+class Solution {
+    public void moveZeroes(int[] nums) {
+        ArrayList<int> arr = new ArrayList<int>();
+        int n = nums.length();
+        for (var i = 0;i<n;i++){
+            if (nums[i]!=0){
+                arr.add(nums[i]);
+            }
+        }
+        for( var j = arr.length(); j++ ;j< n){
+            arr.add(0);
+        }
+    }
+}

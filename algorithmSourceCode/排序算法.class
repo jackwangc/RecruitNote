@@ -1,0 +1,98 @@
+/*
+ * @Author: jackwang
+ * @Date: 2019-01-04 19:54:19
+ * @LastEditTime: 2019-01-06 21:52:15
+ * @decription: 经典排序算法总结
+ */
+
+
+
+
+class ArraySort {
+    
+    // 1. 冒泡排序
+    public int[] bubbleSort(int[] array) {
+        // 如果想要不改变输入元素
+        // int[] arr = Arrays.copyOf(sourceArray, sourceArray.length);
+        int len = array.length;
+        for (int i = 0; i < len; i++){
+            boolean flag = true; // 优化标记 当一次排序没有发生元素交换时，排序已经完成
+            for (int j = 0; j < len - i; j++){
+                if (array[j] > array[j + 1]) {
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                    flag = false; // 优化标记
+                } 
+            }
+            // 判断优化
+            if (flag) {
+                break;
+            }
+        }
+        return array;  
+    }
+    
+    // 2. 选择排序
+    public int[] selectSort(int[] array) {
+        // 每次选择比较出最小值放在最前面
+        for (int i = 0; i < array.length - 1; i++) {
+            int min = i;
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[min] > array[j]){
+                    min = j;
+                }
+            }
+            
+            if (i!=min) {
+                int temp = array[i];
+                array[i] = array[min];
+                array[min] = temp;
+            }
+        }
+        return arr
+    }
+
+    // 3. 插入排序
+    public int[] insertSort(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            int temp = array[i];
+            int j = i;
+            while (j > 0 && temp < array[j - 1]){
+                arr[j] = arr[j - 1];
+                j--;
+            }
+            if(j!=i){
+                arr[j] = temp;
+            }
+        }
+        return array
+    }
+
+    // 4. 希尔排序  希尔排序是插入排序的改进
+    public int[] ShellSort(int[] arr) {
+        int gap = 1;
+        while (gap < arr.length){
+            gap = gap * 3 + 1;
+        }
+        while (gap > 0){
+            for (int i = gap; i < arr.length; i++){
+                int tmp = arr[i];
+                int j = i - gap;
+                while (j >= 0 && arr[j] > tmp) {
+                    arr[j + gap] = arr[j];
+                    j -= gap;
+                }
+                arr[j + gap] = tmp;
+            }
+            gap = (int)Math.floor(gap / 3);
+        }
+        return arr;
+    }
+    // 5. 快速排序
+    
+    // 交换函数  java 中不能使用 交换函数，因为 java 的参数传递 传递的是值，没有传递地址
+    public void swap(num1,num2) {
+        
+    }
+}
