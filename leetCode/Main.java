@@ -1,11 +1,11 @@
 /*
  * @Author: jackwang
  * @Date: 2018-12-19 10:51:12
- * @LastEditTime: 2018-12-19 11:27:38
+ * @LastEditTime: 2019-01-14 20:19:09
  * @decription: 队列实现
  */
 // "static void main" must be defined in a public class.
-
+import java.util.*;
 class MyQueue {
     // store elements
     private List<Integer> data;         
