@@ -1,7 +1,7 @@
 /*
  * @Author: jackwang
  * @Date: 2018-12-19 10:51:12
- * @LastEditTime: 2019-01-14 20:19:09
+ * @LastEditTime: 2019-01-17 11:34:33
  * @decription: 队列实现
  */
 // "static void main" must be defined in a public class.
@@ -38,7 +38,7 @@ class MyQueue {
     }     
 };
 
-public class Main {
+class test {
     public static void main(String[] args) {
         MyQueue q = new MyQueue();
         q.enQueue(5);
