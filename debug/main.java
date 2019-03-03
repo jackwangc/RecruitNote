@@ -3,7 +3,7 @@ public class main {
     public static void main(String[] args) {
         int[] arr = new int[]{8,4,5,7,1,3,6,2,12,7,9};
         int[] result = mergeSort(arr);
-        //System.out.println(result);
+        System.out.println(result);
         System.out.println("result");
     }
     // 7. 归并排序
@@ -22,7 +22,8 @@ public class main {
         int i = 0;
         while (left.length > 0 && right.length > 0) {
             if (left[0] <= right[0]){
-                result[i++] = left[0]; // 将比较结果移动到结果数组中
+                result[i++] = left[0]; 
+               
                 left = Arrays.copyOfRange(left,1,left.length);
             }else{
                 result[i++] = right[0];
