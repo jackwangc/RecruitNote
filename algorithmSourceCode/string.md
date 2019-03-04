@@ -90,5 +90,19 @@ String test3 = test.substring(1,4);  // substring(int beginIndex,int endIndex)
 char[] c = test.toCharArray(); // 将字符串转换为 char 数组
 for(char cc:c){              // 这种方法适用于数组结构的数据
     System.out.println(cc);
-} 
+}
+// 7. 拼接字符串
+String cons = test.concat(test1);  // 将字符串拼接起来 创建了一个新的对象
+// StringBuilder 常用操作 算法题中多用 StringBuilder
+// 1. 创建
+StringBuilder sb = new StringBuilder("1q3e5t7u");
+// 2. 追加
+sb.append("ww");  // append 并不会创建新的对象
+// 3. 反转
+sb.reverse();  // 反转一个字符串：stringBuilder
+String rever = new StringBuilder("hda").reverse().toString(); // 如何反转一个给定字符串返回 string
+// 4. 删除 插入 替换
+sb.delete(start,end);
+sb.insert(int offset,int i); // 插入 int 参数到这个字符串的指定位置 
+sb.replace(start,end,str);
 ```
