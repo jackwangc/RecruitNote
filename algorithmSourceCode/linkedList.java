@@ -74,4 +74,14 @@ class linkedList {
             size--;
         }
     }
+    // 头插法
+    public void LinkedListInsertToHead(ListNode listNode){
+        ListNode head = new ListNode(-1);
+        while (listNode!=null) {  // 1. memo = 1,
+            ListNode memo = listNode.next; // 生产新节点
+            listNode.next = head.next; // 新节点指向原头节点的下个节点
+            head.next = listNode; // 头部节点指向新节点
+            listNode = memo;  
+        }
+    }
 }
