@@ -57,6 +57,7 @@
     5. 哈希表性能，大多数情况下 查找和插入的复杂度达到O(1),时间主要花在计算 hash 上，当hash值全部映射到一个地址上，退化成链表，查找时间复杂度变为O(n)
 
 ## hashMap
+
 > 数组+链表(散列表)+红黑树,当装载因子*初始容量小于散列表元素时，该散列表会再散列，扩容2倍！,当桶数满了的情况，将链表转换成红黑树。
 
 1. 无序，允许为 null, 非同步
@@ -102,8 +103,62 @@ HashMap 和HashTable 的区别
 
 5. 有序
    1. TreeMap实现了NavigableMap接口，而NavigableMap接口继承着SortedMap接口，致使我们的TreeMap是有序的 
+6. 与 HashMap 的区别
+   1. HashMap 速度更快，查找，删除，插入的时间复杂度为 o(1)
+   2. TreeMap 的结果是排好序的 
+## 使用
 
+```java
+// 初始化
+Map<String,String> map = new HashMap<String,String>;
 
+// 插入
+map.put("key","value");
+
+// 获取元素
+String a= map.get("key");
+
+// 移除元素
+map.remove("key");
+
+// 清空元素
+map.clear();
+
+// 判断为空
+boolean a = map.isEmpty()
+
+// 大小
+int n = map.size
+
+// 返回 映射的 Set 视图
+map.entrySet()
+
+// 返回 键的 Set 视图
+map.keySet()
+
+// 返回 map 中值的 Collection 视图
+
+// 循环
+// 1. 最快
+Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+ 
+for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+ 
+    System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+ 
+}
+
+// 2. 键
+for(Integer a : map.keySet()){
+   System.out.println(a);
+   // int value = map.get(a); 最慢
+}
+
+// 3. 值
+for(Integer value : map.values()){
+   System.out.println(value);
+}
+```
 
 
 
