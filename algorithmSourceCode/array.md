@@ -158,4 +158,4 @@ public int solution(int[] arr,int target){
 4. [调整数组顺序使奇数位于偶数前面](../offerJZ/调整数组顺序使奇数位于偶数前面.java)
 5. [顺时针打印矩阵](../offerJZ/顺时针打印矩阵.java)
 6. [连续子数组的最大和](../offerJZ/连续子数组的最大和.java)
-7. [把数组排成最小的数]()
+7. [把数组排成最小的数](../offerJZ/把数组排成最小的数.java)

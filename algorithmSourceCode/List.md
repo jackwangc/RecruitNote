@@ -77,11 +77,32 @@
     for (String str : list) {
         System.out.println(str);
     }
+    // 设置元素值
+    list.set(0,"s");
+    // 获取指定位置的值
+    String s = list.get(0);
+    // 查找
+    boolean flag = list.contains("s");
+    // 删除
+    list.remove("s")
     // 获取链表头数据
     System.out.println("链表头数据:" + list.getFirst());
     // 获取链表尾数据
     System.out.println("链表尾数据:" + list.getLast());
 ```
+
+#### 常见题目
+
+1. [从头到尾打印链表](../offerJZ/8-从头到尾打印链表.java)
+2. [链表中环的入口节点](../offerJZ/9-链表中环的入口节点.java)
+3. [删除链表中的重复节点](../offerJZ/10-删除链表中的重复结点.java) **重点**
+4. [链表中倒数第k个节点](../offerJZ/29-链表中倒数第k个结点.java)
+5. [反转链表](../offerJZ/30-反转链表.java)
+6. [合并两个排序的链表]../offerJZ/
+7. [二叉搜索树与双向链表]../offerJZ/
+8. [两个链表的第一个公共节点](../offerJZ/51-两个链表的第一个公共结点.java)
+9. [把字符串转换成整数]../offerJZ/
+
 ## 区别
 
 *区别* | ArrayList | LinkedList | Vector
@@ -95,3 +116,45 @@
 2. `Vector` 同步每个单独的操作
 3. 向量实际上只是可以作为数组访问的列表，因此它应该被调用 `ArrayList`
 4. 全部 `get()`， `set()`方法是`synchronized`，因此您无法对同步进行细粒度控制。
+
+
+## 队列
+
+1. 队列是一种特殊的线性表，特殊之处在于它只允许在表的前端进行删除操作，而在表的后端进行插入操作，亦即所谓的先进先出（FIFO
+
+```java
+Deque<Integer> integerDeque = new LinkedList<>();
+// 尾部入队，区别在于如果失败了
+// add方法会抛出一个IllegalStateException异常，而offer方法返回false
+integerDeque.offer(122);
+integerDeque.add(122);
+// 头部出队,区别在于如果失败了
+// remove方法抛出一个NoSuchElementException异常，而poll方法返回false
+int head = integerDeque.poll();//返回第一个元素，并在队列中删除
+head = integerDeque.remove();//返回第一个元素，并在队列中删除
+// 头部出队，区别在于如果失败了
+// element方法抛出一个NoSuchElementException异常，而peek方法返回null。
+head = integerDeque.peek();//返回第一个元素，不删除
+head = integerDeque.element();//返回第一个元素，不删除
+```
+### 队列常考题目
+
+1. [用两个栈实现队列](../offerJZ/19-用两个栈实现队列.java)
+
+
+## 2.3 栈
+
+1. 栈（stack）又名堆栈，它是一种运算受限的线性表。其限制是仅允许在表的一端进行插入和删除运算。这一端被称为栈顶，相对地，把另一端称为栈底。它体现了后进先出（LIFO）的特点
+
+```java
+Deque<Integer> stack = new ArrayDeque<Integer>();
+stack.push(12);//尾部入栈
+stack.push(16);//尾部入栈
+int tail = stack.pop();//尾部出栈，并删除该元素
+tail = stack.peek();//尾部出栈，不删除该元素
+```
+
+### 栈常考题目
+
+1. [包含 min 函数的栈](../offerJZ/35-包含min函数的栈.java)
+2. [栈的压入，弹出序列](../offerJZ/36-栈的压入弹出序列.java)

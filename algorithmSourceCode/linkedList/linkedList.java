@@ -15,7 +15,7 @@ class linkedList {
     private LinkNode dummyHeader;
     private int size;
     /** Initialize your data structure here. */
-    public MyLinkedList() {
+    public linkedList() {
         this.size = 0;
         this.dummyHeader = new LinkNode(0, null); 
     }

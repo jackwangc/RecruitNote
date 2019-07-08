@@ -60,6 +60,8 @@ linkedList.remove("s");//删除
 
 //以上方法也适用于ArrayList
 ```
+#### 链表常考题目
+
 
 ### 2.2 队列
 
@@ -80,6 +82,7 @@ head = integerDeque.remove();//返回第一个元素，并在队列中删除
 head = integerDeque.peek();//返回第一个元素，不删除
 head = integerDeque.element();//返回第一个元素，不删除
 ```
+#### 队列常考题目
 
 ### 2.3 栈
 
@@ -92,6 +95,8 @@ stack.push(16);//尾部入栈
 int tail = stack.pop();//尾部出栈，并删除该元素
 tail = stack.peek();//尾部出栈，不删除该元素
 ```
+
+#### 栈常考题目
 
 ## 3. LIST 常用操作
 
@@ -459,27 +464,3 @@ class MyLinkedList {
   }
 }
 ```
-
-## 4 集合
-
-### 4.1 集合
-
-> 集合是指具有某种特定性质的具体的或抽象的对象汇总成的集体，这些对象称为该集合的元素，其主要特性是元素不可重复
-
-1. Set java 中 HashSet 体现了这种数据结构
-
-    ```java
-    HashSet<Integer> integerHashSet = new HashSet<>();
-    integerHashSet.add(12); //添加
-    integerHashSet.contains(12); // 是否包含
-    integerHashSet.size(); // 集合大小
-    integerHashSet.isEmpty(); // 是否为空
-    ```
-2. HashTable 哈希表.它通过把关键码值映射到表中一个位置来访问记录，以加快查找的速度，这个映射函数叫做散列函数。
-
-    ```java
-    HashMap<Integer,String> hashMap = new HashMap<>();
-    hashMap.put(1,"asdsa");//添加
-    hashMap.get(1);//获得
-    hashMap.size();//元素个数
-    ```
