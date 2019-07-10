@@ -29,3 +29,14 @@
 3. [集合](algorithmSourceCode/Collection.md)
 4. [集合知识网络地址](https://mp.weixin.qq.com/s?__biz=MzI4Njg5MDA5NA==&mid=2247484122&idx=1&sn=c3bd6436b3e661ae15cb9d7154d82b89&chksm=ebd743dbdca0cacdcb272576f4be48c466bd73160a87227314e8fb21d5e4f9156c23902198ab&scene=21#wechat_redirect)
 5. [Map](algorithmSourceCode/Map.md)
+
+## Java 基础
+
+1. [基本类型](javaBasicKnowledge\基本类型.md)
+2. [运算符](javaBasicKnowledge\运算符.md)
+3. [关键字](javaBasicKnowledge\java关键字.md)
+4. [命名规则](javaBasicKnowledge\java命名规则.md)
+5. [面向对象](javaBasicKnowledge\面向对象.md)
+6. [设计模式](javaBasicKnowledge\设计模式.md)
+7. [jvm](javaBasicKnowledge\jvm.md)
+8. [多线程](javaBasicKnowledge\多线程.md)
