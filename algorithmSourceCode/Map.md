@@ -145,7 +145,7 @@ HashMap 和HashTable 的区别
 
 ```java
 // 初始化
-Map<String,String> map = new HashMap<String,String>;
+Map<String,String> map = new HashMap<String,String>();
 
 // 插入
 map.put("key","value");

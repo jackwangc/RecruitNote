@@ -48,7 +48,7 @@ String s2="abc";
 
 1. 区别
    1. String 内容不可变，StringBuffer 和StringBuilder 内容可变；因为 String 是由一个由 final 修饰的 char[] 数组实现的
-   2. StringBuilder 非线程安全（单线程使用），String 与 StringBuffe r线程安全（多线程使用）；
+   2. StringBuilder 非线程安全（单线程使用），String 与 StringBuffer 线程安全（多线程使用）；
    3. 如果程序不是多线程的，那么使用 StringBuilder 效率高于 StringBuffer。
 2. String 在修改时不会改变对象自身; StringBuffer 在修改时会改变对象自身
 3. 初始化
@@ -65,8 +65,19 @@ String s2="abc";
 3. char 是基本数据类型；String 是一个类，可以调用方法。
 4. char to Int
    1. `int b = '4' - '0'` 利用ascll 码排列实现
+   2. `int b = 'a'`
+   3. `char a = (char)12`
 
+## ascll
 
+> 标准128，扩展256
+
+1. 常见ASCII码的大小规则：`0~9<A~Z<a~z`
+2. 数字比字母要小。如 “7”<“F”；
+3. 数字0比数字9要小，并按0到9顺序递增。如 `“3”<“8” `；
+4. 字母A比字母Z要小，并按A到Z顺序递增。如 `“A”<“Z”` ；
+5. 同个字母的大写字母比小写字母要小32。如 `“A”<“a”` 。
+6. 个常见字母的ASCII码大小： `“A”为65；“a”为97；“0”为 48 `。
 
 ## 常见操作
 
@@ -93,6 +104,11 @@ for(char cc:c){              // 这种方法适用于数组结构的数据
 }
 // 7. 拼接字符串
 String cons = test.concat(test1);  // 将字符串拼接起来 创建了一个新的对象
+// 8. 删除
+String test  = ("chaojimali");
+test = test.replace("chaoji",""); // 两个参数均为字符串 可以替换和删除
+
+str1=str1.substring(0,idx)+str1.substring(idx+1)
 // StringBuilder 常用操作 算法题中多用 StringBuilder
 // 1. 创建
 StringBuilder sb = new StringBuilder("1q3e5t7u");
@@ -105,4 +121,18 @@ String rever = new StringBuilder("hda").reverse().toString(); // 如何反转一
 sb.delete(start,end);
 sb.insert(int offset,int i); // 插入 int 参数到这个字符串的指定位置 
 sb.replace(start,end,str);
+
+// 字符转换为字符串
+String s = String.valueOf('c'); // 单个字符
+String ss = String.valueOf('dada') // char 数组
+String sss = new String(ch) // ch 为 char 数组
 ```
+
+## 题目
+
+1. [替换空格](../offerJz/4-替换空格.java)
+2. [正则表达式匹配](../offerJz/5-正则表达式匹配.java)
+3. [表示数值的字符串](../offerJz/6-表示数值的字符串.java)
+4. [字符流中第一个不重复的字符](../offerJz/7-字符流中第一个不重复的字符.java)
+5. [字符串的排列](../offerJz/42-字符串的排列.java)
+6. [把数组排成最小的数](../offerJz/47-把数组排成最小的数.java)
