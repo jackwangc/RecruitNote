@@ -54,7 +54,7 @@ class ArraySort {
 
     // 3. 插入排序
     public int[] insertSort(int[] array) {
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 1; i < array.length; i++) {
             int temp = array[i];
             int j = i;
             while (j > 0 && temp < array[j - 1]){

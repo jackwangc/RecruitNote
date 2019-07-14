@@ -199,6 +199,7 @@ for(Integer value : map.values()){
 **参考文章**
 
 1. [hashMap](https://mp.weixin.qq.com/s?__biz=MzI4Njg5MDA5NA==&mid=2247484139&idx=1&sn=bb73ac07081edabeaa199d973c3cc2b0&chksm=ebd743eadca0cafc532f298b6ab98b08205e87e37af6a6a2d33f5f2acaae245057fa01bd93f4#rd)
+2. [原理和源码解析](https://www.cnblogs.com/chengxiao/p/6059914.html)
 
 
 

@@ -124,6 +124,124 @@ int[] array2 = new int[arr.length];
 
 ```
 
+#### 堆排序
+
+> 堆简介
+1. 堆的实现
+   1. 堆是一棵完全二叉树
+   2. 任一结点的值是其子树所有结点的最大值或最小值
+   3. 最大值时，称为大顶堆
+   4. 最小值时，称为小顶堆
+2. [代码实现](heap.java)
+
+```java
+    public static void adjustHeap(int []arr,int i,int length){
+        int temp = arr[i];//先取出当前元素i
+        for(int k = i * 2 + 1; k < length; k = k*2 + 1){//从i结点的左子结点开始，也就是2i+1处开始
+            if(k + 1 < length && arr[k]<arr[k + 1]){//如果左子结点小于右子结点，k指向右子结点
+                k++;
+            }
+            if(arr[k] > temp){//如果子节点大于父节点，将子节点值赋给父节点（不用进行交换）
+                arr[i] = arr[k];
+                i = k;
+            }else{
+                break;
+            }
+        }
+        arr[i] = temp;//将temp值放到最终的位置
+    }
+```
+
+#### 线性查找算法 bfprt
+
+> 从 n 个元素中找出第 k 大的元素，top(k)，最坏复杂度 为o(n)
+
+1. 将n个元素每5个一组，分成n/5(上界)组。
+
+2. 取出每一组的中位数，任意排序方法，比如插入排序。
+
+3. 递归的调用selection算法查找上一步中所有中位数的中位数，设为 x，偶数个中位数的情况下设定为选取中间小的一个。
+
+4. 用x来分割数组，设小于等于x的个数为k，大于 x 的个数即为 n-k。
+
+5. 若i==k，返回x；若i < k，在小于 x 的元素中递归查找第i小的元素；若 i > k，在大于x的元素中递归查找第i-k小的元素。
+
+6. 终止条件：n=1时，返回的即是i小元素。
+
+```java
+/*
+* 快排无法保证随机性
+*/
+
+// 1. 找出中位数的中位数，返回中位数的位置
+public int getArrayMid(int[] a, int l, int r){
+    if (l==r){
+        return l;
+    }
+    int i = 1;
+    for(; i <= r - l - 5; i += 5 ){ // 将 n 个元素每五个一组
+        // 对当前五个数进行排序
+        inserSort(a,i,i+4);// 对当前五个数组排序
+        swap(a,l + (i - l)/5,i+2); // 将中位数放在前几位上
+    }
+    if (i < r - l){ // 剩下的不能被5整除的余数
+        insertSort(a, i, r - 1);
+        swap(a, l + (i - 1)/5, (i + r - 1)/2); // 将最后一组数的中位数
+    }
+    return getArrayMid(a,l,l + (i - l)/5); // 返回中位数的中位数 id
+}
+// 2. 插入排序
+public void insertSort(int[] arr, int l, int r){
+    if (r > l){
+        int i = l + 1;
+        for(;i < r ;i++){
+            int temp = arr[i]
+            int flag = i -1;
+            while(temp < arr[flag] && flag > l){
+                arr[flag + 1] = a[flag];
+                flag--;
+            }
+            a[flag + 1] = temp;
+        }
+    }
+    
+}
+// 4. 快排基准函数
+private int partition (int[] arr, int left, int right) {
+        int pivot = left;  // 基准数
+        int index = pivot + 1;
+        for (int i = index; i <= right; i++) {
+            if (arr[i] < arr[pivot]) {
+                swap(arr, i, index);
+                index++; // 记录基准数
+            }
+        }
+        swap(arr, pivot, index - 1);
+        return index - 1; // 将基准数放在中间的位置
+    }
+// 3. 快排
+public void quickSearch(int[] arr, int l , int r, int k){
+    if (l == r){
+        return arr[l];
+    }
+    int mid = getArrayMid(arr, l, r);
+    int mid_new = partition (array , left, right, mid );// 根据中位数划分数组，是中位数在最终的位置上
+    if (mid_new == k-1){
+        return arr[mid_new];
+    }
+    else if(mid_new < k - 1){
+        return quickSearch(arr, mid_new + 1, r, k);
+    }else{
+        return quickSearch(arr,l,  min_new - 1, k);
+    }
+}
+
+public void swap(int[] arr, int i, int j){
+    int flag = arr[j];
+    arr[j] = arr[i];
+    arr[i] = arr[j];
+}
+```
 ### 排序算法 Java 实现
 
 [排序算法](排序算法.java)

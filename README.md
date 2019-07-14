@@ -29,6 +29,7 @@
 3. [集合](algorithmSourceCode/Collection.md)
 4. [集合知识网络地址](https://mp.weixin.qq.com/s?__biz=MzI4Njg5MDA5NA==&mid=2247484122&idx=1&sn=c3bd6436b3e661ae15cb9d7154d82b89&chksm=ebd743dbdca0cacdcb272576f4be48c466bd73160a87227314e8fb21d5e4f9156c23902198ab&scene=21#wechat_redirect)
 5. [Map](algorithmSourceCode/Map.md)
+6. [二叉树](algorithmSourceCode/binaryTree.md)
 
 ## Java 基础
 
