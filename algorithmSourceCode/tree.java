@@ -143,7 +143,8 @@ class tree {
         queue.add(root);
 
         while (!queue.isEmpty()){
-            TreeNode temp= queue.poll(); // 利用队列先进先出 广度优先搜索
+            // 利用队列先进先出 广度优先搜索
+            TreeNode temp= queue.poll();  // 删除第一个元素并从队列中删除
             System.out.print("");
             if (temp.left!=null){
                 queue.add(temp.left);
