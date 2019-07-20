@@ -15,7 +15,9 @@ public class Solution {
         if (root == null){
             return 0;
         }
+        // 左子树高度
         int left = TreeDepth(root.left);
+        // 右子树高度
         int right = TreeDepth(root.right);
         return Math.max(left, right) + 1;
     }
