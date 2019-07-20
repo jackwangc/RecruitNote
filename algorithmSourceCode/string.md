@@ -2,6 +2,19 @@
 
 > string 类型是不可变的当创建后就存在于内存中，与 c++ 相反。
 
+## 常识
+
+1. String 由char 数组构成
+2. String 
+3. 
+4. 字符串常量池存储在方法区内 
+5. 常量池主要存储在方法区中，当一个字符串被创建的时候，首先会去常量池中查找，如果找到了就返回对改字符串的引用，如果没找到就创建这个字符串并塞到常量池中
+5. String 为什么不可变 
+   1. 不可变，多线程安全
+   2. 节省空间，只有当字符串是不可变的，字符串池才有可能实现。字符串池的实现可以在运行时节约很多heap空间。
+   3. 因为字符串是不可变的，所以在它创建的时候hashcode就被缓存了，不需要重新计算。这就使得字符串很适合作为Map中的键，字符串的处理速度要快过其它的键对象。这就是HashMap中的键往往都使用字符串。
+   4. 缺点：制造垃圾
+6. 字符串常量池有助于为Java运行时节省大量空间，虽然创建字符串时需要更多的时间，为了让数据不冲突进行共享
 ## 常用操作
 
 1. 字符串查找
@@ -15,6 +28,7 @@
 5. 字符串替换 `String newstr = str.replace("a", "A")`
 6. 判断字符串是否相等 `equals(String otherstr)`
 7. 遍历字符串
+   
     ```java
     // 1
     String str = "asdfghjkl";
@@ -32,17 +46,18 @@
     }
     ```
 8. 数组相关，用 length；集合相关，用 size()；字符串相关，用 length()
-9. 字符串加法
-```java
-// 两者的区别
-String a = "a";
-String b = "b";
-String c = a + b;  // String c = new StringBuffer().append(a).append(b).toString(); 在堆内存中新建
+9.  字符串加法
+    
+    ```java
+    // 两者的区别
+    String a = "a";
+    String b = "b";
+    String c = a + b;  // String c = new StringBuffer().append(a).append(b).toString(); 在堆内存中新建
 
-String s1="a"+"b"+"c"; // java 中常量优化机制，编译时 s1 已经成为 abc 在常量池中查找创建，s2 不需要再创建
-String s2="abc";
+    String s1="a"+"b"+"c"; // java 中常量优化机制，编译时 s1 已经成为 abc 在常量池中查找创建，s2 不需要再创建
+    String s2="abc";
 
-```
+    ```
 
 ## stringBuffer, string, stringBuilder
 
