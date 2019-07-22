@@ -135,20 +135,22 @@ class ArraySort {
     private int partition2 (int[] arr, int left, int right) {
         int i = left, j = right;
         int tmp = arr[left]; // 基准数
+        // 重复步骤，直到左右两个指针相遇
         while (i != j) {
-            // 首先从右边开始找
+            // 从右往左扫描，找到一个小于基准值的元素
             while (i < j && arr[j] > tmp) {
                 j--;
             }
-            // 再从左边开始找
+            // 从左往右找到一个大于基准值的元素
             while (i < j && arr[i] < tmp){
                 i++;
             }
+            // 交换这两个元素的位置
             if (i < j) {
                 swap(arr,i,j);
             }
         }
-        // 将基准数归位
+        // 再将基准值与左侧最右边的元素交换
         arr[left] = a[i];
         arr[i] = tmp;
         return i;
@@ -227,9 +229,56 @@ class ArraySort {
         }
         return result;
     }
+    // 归并排序，好理解的版本
+    public void mergeSort2(int[] arr){
+        // 1. 数组长度
+        int len = arr.length;
+        // 2. 分枝
+        sort(arr, 0, len - 1);        
+    }
+    private void sort(int[] arr, int left, int right){
+        if (left < right) {
+            int mid = left + (right - left) >> 1;
+            sort(arr, left, mid);
+            sort(arr, mid, right);
+            // 3. 合并         
+            merge(data, left, mid + 1, right);
+        }
+    }
+    public static void merge(int[] data, int left, int center, int right) {
+        // 临时数组
+        int[] tmpArr = new int[data.length];
+        // 右数组第一个元素索引
+        int mid = center + 1;
+        // third 记录临时数组的索引
+        int third = left;
+        // 缓存左数组第一个元素的索引
+        int tmp = left;
+        while (left <= center && mid <= right) {
+        // 从两个数组中取出最小的放入临时数组
+            if (data[left] <= data[mid]) {
+                tmpArr[third++] = data[left++];
+            } else {
+                tmpArr[third++] = data[mid++];
+            }
+        }
+        // 剩余部分依次放入临时数组（实际上两个 while 只会执行其中一个）
+        while (mid <= right) {
+            tmpArr[third++] = data[mid++];
+        }
+        while (left <= center) {
+            tmpArr[third++] = data[left++];
+        }
+        // 将临时数组中的内容拷贝回原数组中
+        // （原 left-right 范围的内容被复制回原数组）
+        while (tmp <= right) {
+            data[tmp] = tmpArr[tmp++];
+        }       
+    }
+
     // 交换函数  java 中不能使用 交换函数，因为 java 的参数传递 传递的是值，没有传递地址
     // public void swap(num1, num2) {
-        
+    //   
     // }
     // 交换函数 只能将数组一并传入
     public void swap(int[] arr, int i, int j){

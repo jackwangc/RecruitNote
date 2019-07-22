@@ -58,12 +58,20 @@ ArrayUtils.reverse(intArray); // 翻转
 int[] removed = ArrayUtils.removeElement(intArray, 3); // 移除
 
 ```
+
 ## 排序算法
+
+> java 中采用的是 TimSort 排序，结合了插入排序，归并排序，二分搜索等算法。1. 对于简单对象的数据，长度在一定范围内，采用快速排序。2.超过长度，采用归并排序。3. 复杂对象数组，长度在一定范围内，使用折半插入排序。4.长度超过，采用归并排序。
+> java 中采用归并排序比较多，因为归并排序比较次数最少，并且归并排序是稳定的。原因：对于Java来说，进行比较可能比较耗时（使用Comparator）；但移动元素属于引用赋值，不是庞大对象的拷贝。（因为对于一个hashcode计算复杂的对象来说，移动的成本远低于比较的成本）
 
 ### 排序
 
 1. 比较类排序：冒泡排序，快速排序；插入排序，希尔排序；选择排序，堆排序；归并排序
 2. 非比较类排序：桶排序，计数排序，基数排序
+3. 内排序：操作都在内存中完成，大部分都是内排序
+4. 外排序：数据放在磁盘当中，排序通过磁盘和内存的数据传输进行，归并排序和计数排序，桶排序，基数排序。
+5. [排序算法实现](排序算法.java)
+6. [参考链接](https://www.cnblogs.com/guoyaohua/p/8600214.html)
 
 ![排序](../picture/排序算法.png)
 
@@ -126,13 +134,17 @@ int[] array2 = new int[arr.length];
 
 #### 堆排序
 
-> 堆简介
-1. 堆的实现
+> 快速排序比堆排序的效率高很多,因为在堆排序中，用于比较的时间开销比较大。
+> 时间开销大的原因：在堆排序（小根堆）的时候，每次总是将最小的元素移除，然后将最后的元素放到堆顶，再让其自我调整。这样一来，有很多比较将是被浪费的，因为被拿到堆顶的那个元素几乎肯定是很大的，而
+
+1. 堆简介
+2. 堆的实现
    1. 堆是一棵完全二叉树
    2. 任一结点的值是其子树所有结点的最大值或最小值
    3. 最大值时，称为大顶堆
    4. 最小值时，称为小顶堆
-2. [代码实现](heap.java)
+3. [代码实现](heap.java)
+4. [图解堆排序](https://www.cnblogs.com/chengxiao/p/6129630.html)
 
 ```java
     public static void adjustHeap(int []arr,int i,int length){
@@ -152,7 +164,7 @@ int[] array2 = new int[arr.length];
     }
 ```
 
-#### 线性查找算法 bfprt
+#### 线性查找算法 bfprt topk
 
 > 从 n 个元素中找出第 k 大的元素，top(k)，最坏复杂度 为o(n)
 
@@ -242,16 +254,16 @@ public void swap(int[] arr, int i, int j){
     arr[i] = arr[j];
 }
 ```
-### 排序算法 Java 实现
 
-[排序算法](排序算法.java)
+
+
 
 ### 二分查找
 
 ```java
 // 用于排好序的数组
 
-public int solution(int[] arr,int target){
+public int solution(int[] arr,int key){
     int high = arr.length - 1;
     int low = 0;
     while(low <= high){
@@ -271,9 +283,11 @@ public int solution(int[] arr,int target){
 ## 数组-剑指offer
 
 1. [二维数组的查找](../offerJz/1-二维数组中的查找.java)
-2. [数组中的重复数字](../offerJz/数组中重复的数字.java)
-3. [构建乘积数组](../offerJZ/构建乘积数组.java)
-4. [调整数组顺序使奇数位于偶数前面](../offerJz/调整数组顺序使奇数位于偶数前面.java)
-5. [顺时针打印矩阵](../offerJz/顺时针打印矩阵.java)
-6. [连续子数组的最大和](../offerJz/连续子数组的最大和.java)
-7. [把数组排成最小的数](../offerJz/把数组排成最小的数.java)
+2. [数组中的重复数字](../offerJz/2-数组中重复的数字.java)
+3. [构建乘积数组](../offerJZ/3-构建乘积数组.java)
+4. [调整数组顺序使奇数位于偶数前面](../offerJz/28-调整数组顺序使奇数位于偶数前面.java)
+5. [顺时针打印矩阵](../offerJz/34-顺时针打印矩阵.java)
+6. [连续子数组的最大和](../offerJz/45-连续子数组的最大和.java)
+7. [把数组排成最小的数](../offerJz/47-把数组排成最小的数.java)
+8. [数组中第 k 个最大元素](../leetCode/215-数组中第k个最大的元素.java)
+9. [前k个高频元素]()
