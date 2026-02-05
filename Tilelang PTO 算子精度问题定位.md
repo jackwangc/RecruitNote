@@ -344,7 +344,7 @@ void CodeGenTileLangAscendPto::BinaryVecOpsCodegen(const CallNode *op,
 ```
 
 -----
-
+```sh
 -exec p op->args[2]->GetTypeKey()
 $3 = "tir.Add"
 
@@ -353,6 +353,43 @@ $3 = "tir.Add"
 
       // Debug: Print the type key
     std::cerr << "[DEBUG] IsComplexExpression called, type: " << expr->GetTypeKey() << std::endl;
+```
 
+```c++
+bool IsComplexExpression(const PrimExpr& expr) {
+    // Debug: Print the type key
+    std::cerr << "[DEBUG] IsComplexExpression called, type: " << expr->GetTypeKey() << std::endl;
 
+    // Check if it's a CallNode (e.g., buffer.GetValue(index))
+    if (expr.as<CallNode>()) {
+        std::cerr << "[DEBUG] Detected as CallNode" << std::endl;
+        return true;
+    }
+    // Check if it's an arithmetic operation (Add/Sub/Mul/Div/Mod/etc.)
+    // Note: Use tir:: prefix for arithmetic nodes as they're in the tir namespace
+    if (expr.as<tir::AddNode>()) {
+        std::cerr << "[DEBUG] Detected as AddNode" << std::endl;
+        return true;
+    }
+    if (expr.as<tir::SubNode>()) {
+        std::cerr << "[DEBUG] Detected as SubNode" << std::endl;
+        return true;
+    }
+    if (expr.as<tir::MulNode>()) {
+        std::cerr << "[DEBUG] Detected as MulNode" << std::endl;
+        return true;
+    }
+    if (expr.as<tir::DivNode>()) {
+        std::cerr << "[DEBUG] Detected as DivNode" << std::endl;
+        return true;
+    }
+    if (expr.as<tir::ModNode>() || expr.as<tir::FloorDivNode>() ||
+        expr.as<tir::FloorModNode>() || expr.as<tir::MaxNode>() ||
+        expr.as<tir::MinNode>()) {
+        return true;
+    }
+    std::cerr << "[DEBUG] Not detected as complex expression" << std::endl;
+    return false;
+}
+```
 
