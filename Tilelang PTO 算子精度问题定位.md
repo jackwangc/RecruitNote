@@ -348,5 +348,11 @@ void CodeGenTileLangAscendPto::BinaryVecOpsCodegen(const CallNode *op,
 -exec p op->args[2]->GetTypeKey()
 $3 = "tir.Add"
 
+  std::cerr << "[DEBUG] BinaryVecOpsCodegen: Checking args[2]" << std::endl;
+  std::cerr << "[DEBUG] args[2] type: " << op->args[2]->GetTypeKey() << std::endl;
+
+      // Debug: Print the type key
+    std::cerr << "[DEBUG] IsComplexExpression called, type: " << expr->GetTypeKey() << std::endl;
+
 
 
