@@ -343,5 +343,10 @@ void CodeGenTileLangAscendPto::BinaryVecOpsCodegen(const CallNode *op,
         TADDS(x_32_row_view, x_32_row_view, scalar);
 ```
 
+-----
+
+-exec p op->args[2]->GetTypeKey()
+$3 = "tir.Add"
+
 
 
