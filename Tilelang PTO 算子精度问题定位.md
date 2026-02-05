@@ -341,6 +341,7 @@ void CodeGenTileLangAscendPto::BinaryVecOpsCodegen(const CallNode *op,
         pipe_barrier(PIPE_ALL);
         // 4. 只对这一行进行 Adds 操作
         TADDS(x_32_row_view, x_32_row_view, scalar);
+
 ```
 
 -----
@@ -391,5 +392,35 @@ bool IsComplexExpression(const PrimExpr& expr) {
     std::cerr << "[DEBUG] Not detected as complex expression" << std::endl;
     return false;
 }
+```
+
+```
+        T.tile.sub(x_32[n_idx, :], x_32[n_idx, :], tile_max[n_idx])
+
+        float scalar = -(prev_max.GetValue(n_idx_1) + prev_sum.GetValue(n_idx_1));
+        auto tile_max_scalar= tile_max.GetValue(n_idx);
+
+        T.tile.sub(x_32[n_idx, :], x_32[n_idx, :], prev_max[n_idx] + prev_sum[n_idx])
+        auto x_32_scalar= x_32.GetValue((prev_max.GetValue(n_idx_1) + prev_sum.GetValue(n_idx_1)));
+
+        pipe_barrier(PIPE_ALL);
+        tl::ascend_pto::TileUbDataND<float, 1, 128, 1, 128> x_32_temp;
+        TASSIGN(x_32_temp, 16896 + (n_idx * 128) * 4);
+        pipe_barrier(PIPE_ALL);
+        TADDS(x_32_temp, x_32_temp, -tile_max_scalar);
+
+
+        pipe_barrier(PIPE_V);
+        // 1. 获取当前行对应的标量
+        float scalar = -(prev_max.GetValue(n_idx_1) + prev_sum.GetValue(n_idx_1));
+        // 2. 关键：定义一个只代表“一行”的临时视图
+        tl::ascend_pto::TileUbDataND<float, 1, 128, 1, 128> x_32_row_view;
+        // 3. 关键：将视图绑定到 x_32 的具体行起始地址 (16896 是 x_32 的基址)
+        TASSIGN(x_32_row_view, 16896 + (n_idx_1 * 128) * 4); 
+        pipe_barrier(PIPE_ALL);
+        // 4. 只对这一行进行 Adds 操作
+        TADDS(x_32_row_view, x_32_row_view, scalar);
+
+
 ```
 
